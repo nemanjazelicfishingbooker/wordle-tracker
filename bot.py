@@ -25,7 +25,7 @@ DATA_FILE = Path(os.environ.get("DATA_FILE", "data/scoreboard.json"))
 SCAN_WINDOW_HOURS = int(os.environ.get("SCAN_WINDOW_HOURS", "26"))
 
 # Name of the Wordle bot whose messages we parse
-WORDLE_BOT_NAME = os.environ.get("WORDLE_BOT_NAME", "WordleAPP")
+WORDLE_BOT_NAME = os.environ.get("WORDLE_BOT_NAME", "Wordle")
 
 # ── WordleAPP message parser ───────────────────────────────────────────────
 
