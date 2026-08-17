@@ -1,6 +1,11 @@
 {
   "streak": 0,
-  "last_date": null,
+  "last_date": "2026-08-17",
   "users": {},
-  "history": []
+  "history": [
+    {
+      "date": "2026-08-17",
+      "results": {}
+    }
+  ]
 }
