@@ -120,7 +120,10 @@ async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict
     """
     results: dict[str, dict] = {}
 
-    for channel in guild.text_channels:
+    # Scan both text channels and voice channel chats
+    all_channels = list(guild.text_channels) + list(guild.voice_channels)
+
+    for channel in all_channels:
         perms = channel.permissions_for(guild.me)
         if not perms.read_messages or not perms.read_message_history:
             continue
