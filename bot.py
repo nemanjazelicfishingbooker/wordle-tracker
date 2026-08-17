@@ -1,14 +1,13 @@
 """
 Discord Wordle Tracker Bot
 
-Scans all text channels for Wordle results posted in the last 24 hours,
-updates a persistent scoreboard, and posts a daily summary.
+Reads daily results posted by the WordleAPP bot, parses scores,
+updates a persistent scoreboard, and posts a daily summary + all-time leaderboard.
 """
 
 import os
 import json
 import re
-import asyncio
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from collections import defaultdict
@@ -25,53 +24,61 @@ DATA_FILE = Path(os.environ.get("DATA_FILE", "data/scoreboard.json"))
 # How far back to scan for results (hours)
 SCAN_WINDOW_HOURS = int(os.environ.get("SCAN_WINDOW_HOURS", "26"))
 
-# ── Wordle message parser ───────────────────────────────────────────────────
+# Name of the Wordle bot whose messages we parse
+WORDLE_BOT_NAME = os.environ.get("WORDLE_BOT_NAME", "WordleAPP")
 
-# Matches lines like "Wordle 1,234 3/6" or "Wordle 1234 X/6"
-WORDLE_RE = re.compile(
-    r"Wordle\s+[\d,]+\s+([1-6X])/6",
-    re.IGNORECASE,
-)
+# ── WordleAPP message parser ───────────────────────────────────────────────
 
+# Matches score sections like "3/6:" or "X/6:"
+SCORE_SECTION_RE = re.compile(r"([1-6X])/6:")
 
-def parse_wordle_score(content: str) -> str | None:
-    """Extract the score (e.g. '3' or 'X') from a Wordle share message."""
-    m = WORDLE_RE.search(content)
-    if not m:
-        return None
-    return m.group(1)
+# Matches Discord user mentions like <@123456> or <@!123456>
+MENTION_RE = re.compile(r"<@!?(\d+)>")
 
 
-def extract_wordle_number(content: str) -> int | None:
-    """Extract the puzzle number from a Wordle share message."""
-    m = re.search(r"Wordle\s+([\d,]+)\s+[1-6X]/6", content, re.IGNORECASE)
-    if not m:
-        return None
-    return int(m.group(1).replace(",", ""))
+def parse_wordleapp_message(content: str, message: discord.Message) -> dict[str, str]:
+    """
+    Parse a WordleAPP summary message.
+    Input format example:
+      "Your group is on an 81 day streak! Here are yesterday's results:
+       2/6: <@123> 3/6: <@456> <@789> 4/6: <@012> X/6: <@345>"
+
+    Returns {user_id_str: score_str} e.g. {"123": "2", "456": "3", ...}
+    """
+    results = {}
+
+    # Find all score section positions
+    sections = list(SCORE_SECTION_RE.finditer(content))
+    if not sections:
+        return results
+
+    for i, match in enumerate(sections):
+        score = match.group(1)  # "2", "3", "X", etc.
+        start = match.end()
+        end = sections[i + 1].start() if i + 1 < len(sections) else len(content)
+
+        # Extract the text between this score marker and the next
+        section_text = content[start:end]
+
+        # Find all user mentions in this section
+        for mention in MENTION_RE.finditer(section_text):
+            user_id = mention.group(1)
+            results[user_id] = score
+
+    return results
+
+
+def extract_streak_from_message(content: str) -> int | None:
+    """Extract the group streak number from a WordleAPP message."""
+    m = re.search(r"on an? (\d+) day streak", content)
+    if m:
+        return int(m.group(1))
+    return None
 
 
 # ── Persistent data ────────────────────────────────────────────────────────
 
 def load_data() -> dict:
-    """Load the scoreboard JSON. Structure:
-    {
-        "streak": 0,
-        "last_date": null,
-        "users": {
-            "<user_id>": {
-                "display_name": "Nickname",
-                "total_games": 10,
-                "total_wins": 8,
-                "score_counts": {"1": 0, "2": 1, "3": 3, ...},
-                "current_streak": 5,
-                "best_streak": 7
-            }
-        },
-        "history": [
-            {"date": "2025-01-15", "puzzle": 1234, "results": {"user_id": "3"}}
-        ]
-    }
-    """
     if DATA_FILE.exists():
         return json.loads(DATA_FILE.read_text())
     return {
@@ -98,7 +105,6 @@ def ensure_user(data: dict, user_id: str, display_name: str) -> dict:
             "current_streak": 0,
             "best_streak": 0,
         }
-    # Always update display name to latest
     data["users"][user_id]["display_name"] = display_name
     return data["users"][user_id]
 
@@ -112,17 +118,17 @@ intents.members = True
 client = discord.Client(intents=intents)
 
 
-async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict]:
+async def find_wordleapp_message(guild: discord.Guild, after: datetime) -> tuple[dict[str, str], int | None, discord.Message | None]:
     """
-    Scan all readable text channels for Wordle results posted after `after`.
-    Returns {user_id_str: {"score": "3", "display_name": "Nick", "puzzle": 1234}}
-    Only keeps the first result per user (in case someone posted twice).
+    Scan all channels for the most recent WordleAPP bot message.
+    Returns (results_dict, streak, message) or ({}, None, None) if not found.
     """
-    results: dict[str, dict] = {}
-
-    # Scan both text channels and voice channel chats
     all_channels = list(guild.text_channels) + list(guild.voice_channels)
     print(f"Total channels to check: {len(all_channels)}")
+
+    best_message = None
+    best_results = {}
+    best_streak = None
 
     for channel in all_channels:
         ch_type = "text" if isinstance(channel, discord.TextChannel) else "voice"
@@ -136,26 +142,25 @@ async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict
         try:
             async for message in channel.history(after=after, limit=500):
                 msg_count += 1
-                if message.author.bot:
+
+                # Only look at messages from the WordleAPP bot
+                if not message.author.bot:
+                    continue
+                if WORDLE_BOT_NAME.lower() not in message.author.name.lower():
                     continue
 
-                score = parse_wordle_score(message.content)
-                if score is None:
-                    continue
-                print(f"    FOUND: {message.author.display_name} -> {score}/6 in #{channel.name}")
+                print(f"    Found WordleAPP message in #{channel.name}: {message.content[:100]}...")
 
-                uid = str(message.author.id)
-                if uid in results:
-                    continue  # first result wins
+                results = parse_wordleapp_message(message.content, message)
+                if results:
+                    streak = extract_streak_from_message(message.content)
+                    # Keep the most recent one
+                    if best_message is None or message.created_at > best_message.created_at:
+                        best_message = message
+                        best_results = results
+                        best_streak = streak
+                        print(f"    Parsed {len(results)} results, streak={streak}")
 
-                puzzle_num = extract_wordle_number(message.content)
-                display = message.author.display_name
-
-                results[uid] = {
-                    "score": score,
-                    "display_name": display,
-                    "puzzle": puzzle_num,
-                }
             print(f"    Read {msg_count} messages in #{channel.name}")
         except discord.Forbidden:
             print(f"    FORBIDDEN: #{channel.name}")
@@ -163,44 +168,43 @@ async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict
         except discord.HTTPException as e:
             print(f"  ⚠ Error reading #{channel.name}: {e}")
 
-    return results
+    return best_results, best_streak, best_message
 
 
 def build_summary(results: dict[str, dict], data: dict) -> str:
-    """Build the daily summary message."""
+    """Build the daily summary message in the same format as WordleAPP."""
     if not results:
         return "No Wordle results found today. The streak is broken! 😢"
 
     # Group by score
     by_score: dict[str, list[str]] = defaultdict(list)
     for uid, info in results.items():
-        by_score[info["score"]].append(info["display_name"])
+        by_score[info["score"]].append(f"<@{uid}>")
 
     # Sort: 1/6 first … 6/6 … X/6 last
     score_order = ["1", "2", "3", "4", "5", "6", "X"]
-    lines = []
+    parts = []
     for s in score_order:
         if s not in by_score:
             continue
-        names = " ".join(f"@{n}" for n in sorted(by_score[s]))
-        label = f"{s}/6"
-        lines.append(f"**{label}:** {names}")
+        names = " ".join(by_score[s])
+        parts.append(f"{s}/6: {names}")
 
     streak = data["streak"]
-    header = f"Your group is on a **{streak} day streak!** Here are yesterday's results:\n"
-    if streak == 0:
+    if streak > 0:
+        header = f"Your group is on a {streak} day streak! Here are yesterday's results:\n"
+    else:
         header = "The streak was broken! Here are yesterday's results:\n"
 
-    return header + "\n".join(lines)
+    return header + "\n".join(parts)
 
 
 def build_scoreboard(data: dict) -> str:
-    """Build an all-time scoreboard embed-friendly string."""
+    """Build an all-time scoreboard."""
     users = data["users"]
     if not users:
         return "No scores recorded yet."
 
-    # Sort by total wins desc, then by average score asc
     def sort_key(item):
         u = item[1]
         total = u["total_games"]
@@ -232,32 +236,25 @@ def build_scoreboard(data: dict) -> str:
     return "\n".join(lines)
 
 
-def update_scoreboard(data: dict, results: dict[str, dict], today_str: str) -> None:
+def update_scoreboard(data: dict, results: dict[str, dict], today_str: str, wordleapp_streak: int | None) -> None:
     """Update the persistent scoreboard with today's results."""
-    # Check if everyone failed (X) — breaks the group streak
     all_failed = all(r["score"] == "X" for r in results.values())
     no_results = len(results) == 0
 
-    # Update group streak
-    yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
-    if no_results or all_failed:
+    # Use WordleAPP's streak if available, otherwise calculate our own
+    if wordleapp_streak is not None:
+        data["streak"] = wordleapp_streak
+    elif no_results or all_failed:
         data["streak"] = 0
-    elif data["last_date"] == yesterday or data["last_date"] is None:
-        data["streak"] += 1
     else:
-        # Gap in days — streak broken
-        data["streak"] = 1
+        yesterday = (datetime.now(timezone.utc) - timedelta(days=1)).strftime("%Y-%m-%d")
+        if data["last_date"] == yesterday or data["last_date"] is None:
+            data["streak"] += 1
+        else:
+            data["streak"] = 1
 
     data["last_date"] = today_str
 
-    # Puzzle number (pick the first one found)
-    puzzle = None
-    for r in results.values():
-        if r.get("puzzle"):
-            puzzle = r["puzzle"]
-            break
-
-    # Track which users played today
     played_today = set()
 
     for uid, info in results.items():
@@ -284,7 +281,6 @@ def update_scoreboard(data: dict, results: dict[str, dict], today_str: str) -> N
     # Record in history
     history_entry = {
         "date": today_str,
-        "puzzle": puzzle,
         "results": {uid: info["score"] for uid, info in results.items()},
     }
     data["history"].append(history_entry)
@@ -301,7 +297,7 @@ async def on_ready():
 
         print(f"Scanning guild: {guild.name}")
 
-        # Time window — look at last SCAN_WINDOW_HOURS
+        # Time window
         after = datetime.now(timezone.utc) - timedelta(hours=SCAN_WINDOW_HOURS)
         today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -314,15 +310,30 @@ async def on_ready():
             await client.close()
             return
 
-        # Scan all channels
-        results = await scan_channels(guild, after)
-        print(f"Found {len(results)} Wordle results")
+        # Find the WordleAPP message
+        raw_results, wordleapp_streak, wordle_msg = await find_wordleapp_message(guild, after)
+        print(f"Found {len(raw_results)} Wordle results from WordleAPP")
+
+        if not raw_results:
+            print("No WordleAPP message found in the scan window.")
+
+        # Resolve user IDs to display names
+        results = {}
+        for uid, score in raw_results.items():
+            try:
+                member = guild.get_member(int(uid))
+                if member is None:
+                    member = await guild.fetch_member(int(uid))
+                display_name = member.display_name
+            except Exception:
+                display_name = f"User-{uid}"
+            results[uid] = {"score": score, "display_name": display_name}
 
         # Update scoreboard
-        update_scoreboard(data, results, today_str)
+        update_scoreboard(data, results, today_str, wordleapp_streak)
         save_data(data)
 
-        # Post summary to the designated channel
+        # Post summary
         channel = guild.get_channel(SUMMARY_CHANNEL_ID)
         if channel is None:
             channel = await client.fetch_channel(SUMMARY_CHANNEL_ID)
@@ -331,7 +342,6 @@ async def on_ready():
         await channel.send(summary)
         print("Posted daily summary")
 
-        # Post scoreboard
         scoreboard = build_scoreboard(data)
         await channel.send(scoreboard)
         print("Posted scoreboard")
