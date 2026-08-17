@@ -101,6 +101,7 @@ def ensure_user(data: dict, user_id: str, display_name: str) -> dict:
             "display_name": display_name,
             "total_games": 0,
             "total_wins": 0,
+            "best_count": 0,
             "score_counts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "X": 0},
             "current_streak": 0,
             "best_streak": 0,
@@ -200,37 +201,36 @@ def build_summary(results: dict[str, dict], data: dict) -> str:
 
 
 def build_scoreboard(data: dict) -> str:
-    """Build an all-time scoreboard."""
+    """Build an all-time scoreboard, sorted by best count."""
     users = data["users"]
     if not users:
         return "No scores recorded yet."
 
+    # Sort by best_count desc, then avg asc
     def sort_key(item):
         u = item[1]
-        total = u["total_games"]
-        if total == 0:
-            return (0, 99)
-        avg = sum(
-            int(k) * v for k, v in u["score_counts"].items() if k != "X"
-        ) / max(total, 1)
-        return (-u["total_wins"], avg)
+        best_count = u.get("best_count", 0)
+        wins = u["total_wins"]
+        avg_parts = [int(k) * v for k, v in u["score_counts"].items() if k != "X"]
+        avg = sum(avg_parts) / max(wins, 1) if wins else 99
+        return (-best_count, avg)
 
     sorted_users = sorted(users.items(), key=sort_key)
 
     lines = ["🏆 **All-Time Wordle Scoreboard** 🏆\n"]
     for rank, (uid, u) in enumerate(sorted_users, 1):
         medal = {1: "🥇", 2: "🥈", 3: "🥉"}.get(rank, f"**{rank}.**")
+        best_count = u.get("best_count", 0)
         wins = u["total_wins"]
         games = u["total_games"]
-        best = u["best_streak"]
-        current = u["current_streak"]
         avg_parts = [int(k) * v for k, v in u["score_counts"].items() if k != "X"]
         avg = sum(avg_parts) / max(wins, 1) if wins else 0
+        current = u["current_streak"]
+        best_streak = u["best_streak"]
+
         lines.append(
-            f"{medal} **{u['display_name']}** — "
-            f"{wins}/{games} wins, "
-            f"avg {avg:.1f}/6, "
-            f"streak {current} (best {best})"
+            f"{medal} **{u['display_name']}** — **⭐ {best_count} best**  ·  avg {avg:.1f}/6\n"
+            f"　　　{wins}/{games} solved  ·  streak {current} (best {best_streak})"
         )
 
     return "\n".join(lines)
@@ -257,6 +257,15 @@ def update_scoreboard(data: dict, results: dict[str, dict], today_str: str, word
 
     played_today = set()
 
+    # Find today's best score (lowest number, X doesn't count)
+    numeric_scores = [
+        (uid, int(info["score"]))
+        for uid, info in results.items()
+        if info["score"] != "X"
+    ]
+    best_score = min((s for _, s in numeric_scores), default=None)
+    todays_best_uids = {uid for uid, s in numeric_scores if s == best_score} if best_score else set()
+
     for uid, info in results.items():
         user = ensure_user(data, uid, info["display_name"])
         score = info["score"]
@@ -270,6 +279,10 @@ def update_scoreboard(data: dict, results: dict[str, dict], today_str: str, word
             user["best_streak"] = max(user["best_streak"], user["current_streak"])
         else:
             user["current_streak"] = 0
+
+        # Track best of the day
+        if uid in todays_best_uids:
+            user["best_count"] = user.get("best_count", 0) + 1
 
         played_today.add(uid)
 
