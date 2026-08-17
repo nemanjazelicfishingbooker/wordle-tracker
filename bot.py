@@ -122,20 +122,27 @@ async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict
 
     # Scan both text channels and voice channel chats
     all_channels = list(guild.text_channels) + list(guild.voice_channels)
+    print(f"Total channels to check: {len(all_channels)}")
 
     for channel in all_channels:
+        ch_type = "text" if isinstance(channel, discord.TextChannel) else "voice"
         perms = channel.permissions_for(guild.me)
         if not perms.read_messages or not perms.read_message_history:
+            print(f"  SKIP (no perms): #{channel.name} [{ch_type}]")
             continue
 
+        print(f"  Scanning: #{channel.name} [{ch_type}]")
+        msg_count = 0
         try:
             async for message in channel.history(after=after, limit=500):
+                msg_count += 1
                 if message.author.bot:
                     continue
 
                 score = parse_wordle_score(message.content)
                 if score is None:
                     continue
+                print(f"    FOUND: {message.author.display_name} -> {score}/6 in #{channel.name}")
 
                 uid = str(message.author.id)
                 if uid in results:
@@ -149,7 +156,9 @@ async def scan_channels(guild: discord.Guild, after: datetime) -> dict[str, dict
                     "display_name": display,
                     "puzzle": puzzle_num,
                 }
+            print(f"    Read {msg_count} messages in #{channel.name}")
         except discord.Forbidden:
+            print(f"    FORBIDDEN: #{channel.name}")
             continue
         except discord.HTTPException as e:
             print(f"  ⚠ Error reading #{channel.name}: {e}")
