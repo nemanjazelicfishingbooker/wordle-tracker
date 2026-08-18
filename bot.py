@@ -230,7 +230,7 @@ def build_scoreboard(data: dict) -> str:
 
         lines.append(
             f"{medal} **{u['display_name']}** — **⭐ {best_count} best**  ·  avg {avg:.1f}/6\n"
-            f"　　　{wins}/{games} solved  ·  streak {current} (best {best_streak})"
+            f"　　　{wins}/{games} solved"
         )
 
     return "\n".join(lines)
