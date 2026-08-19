@@ -36,12 +36,14 @@ SCORE_SECTION_RE = re.compile(r"([1-6X])/6:")
 MENTION_RE = re.compile(r"<@!?(\d+)>")
 
 
-def parse_wordleapp_message(content: str, message: discord.Message) -> dict[str, str]:
+def parse_wordleapp_message(content: str, members: list[discord.Member]) -> dict[str, str]:
     """
-    Parse a WordleAPP summary message.
-    Input format example:
-      "Your group is on an 81 day streak! Here are yesterday's results:
-       2/6: <@123> 3/6: <@456> <@789> 4/6: <@012> X/6: <@345>"
+    Parse a WordleAPP summary message. Handles both real Discord mentions
+    (<@123456>) and plain text @mentions (@Username).
+
+    Input format examples:
+      "2/6: @Paćenik (čuo sam od mnogih) 3/6: @ja samuel ivana @Iza oblaka [65]"
+      "2/6: <@123> 3/6: <@456> <@789>"
 
     Returns {user_id_str: score_str} e.g. {"123": "2", "456": "3", ...}
     """
@@ -52,18 +54,45 @@ def parse_wordleapp_message(content: str, message: discord.Message) -> dict[str,
     if not sections:
         return results
 
+    # Build a lookup of display names -> user IDs (longest names first for greedy matching)
+    name_to_id: dict[str, str] = {}
+    for member in members:
+        name_to_id[member.display_name.lower()] = str(member.id)
+        name_to_id[member.name.lower()] = str(member.id)
+    # Sort by length descending so "ja samuel ivana" matches before "ja"
+    sorted_names = sorted(name_to_id.keys(), key=len, reverse=True)
+
     for i, match in enumerate(sections):
         score = match.group(1)  # "2", "3", "X", etc.
         start = match.end()
         end = sections[i + 1].start() if i + 1 < len(sections) else len(content)
 
-        # Extract the text between this score marker and the next
         section_text = content[start:end]
 
-        # Find all user mentions in this section
-        for mention in MENTION_RE.finditer(section_text):
-            user_id = mention.group(1)
-            results[user_id] = score
+        # Try real Discord mentions first
+        discord_mentions = list(MENTION_RE.finditer(section_text))
+        if discord_mentions:
+            for mention in discord_mentions:
+                user_id = mention.group(1)
+                results[user_id] = score
+        else:
+            # Fall back to plain text @mentions — match against guild members
+            section_lower = section_text.lower()
+            matched_positions = set()  # avoid double-matching overlapping names
+
+            for name in sorted_names:
+                # Look for @name in the section text
+                search_for = f"@{name}"
+                pos = section_lower.find(search_for)
+                while pos != -1:
+                    # Check this position hasn't been claimed by a longer name
+                    if not any(pos >= mp and pos < mp + ml for mp, ml in matched_positions):
+                        uid = name_to_id[name]
+                        if uid not in results:  # first match wins per user
+                            results[uid] = score
+                            print(f"      Matched '@{name}' -> user {uid} with score {score}")
+                        matched_positions.add((pos, len(search_for)))
+                    pos = section_lower.find(search_for, pos + 1)
 
     return results
 
@@ -119,7 +148,7 @@ intents.members = True
 client = discord.Client(intents=intents)
 
 
-async def find_wordleapp_message(guild: discord.Guild, after: datetime) -> tuple[dict[str, str], int | None, discord.Message | None]:
+async def find_wordleapp_message(guild: discord.Guild, after: datetime, members: list[discord.Member]) -> tuple[dict[str, str], int | None, discord.Message | None]:
     """
     Scan all channels for the most recent WordleAPP bot message.
     Returns (results_dict, streak, message) or ({}, None, None) if not found.
@@ -152,7 +181,7 @@ async def find_wordleapp_message(guild: discord.Guild, after: datetime) -> tuple
 
                 print(f"    Found WordleAPP message in #{channel.name}: {message.content[:100]}...")
 
-                results = parse_wordleapp_message(message.content, message)
+                results = parse_wordleapp_message(message.content, members)
                 if results:
                     streak = extract_streak_from_message(message.content)
                     # Keep the most recent one
@@ -323,8 +352,14 @@ async def on_ready():
             await client.close()
             return
 
+        # Fetch all guild members for name matching
+        members = []
+        async for member in guild.fetch_members(limit=None):
+            members.append(member)
+        print(f"Fetched {len(members)} guild members")
+
         # Find the WordleAPP message
-        raw_results, wordleapp_streak, wordle_msg = await find_wordleapp_message(guild, after)
+        raw_results, wordleapp_streak, wordle_msg = await find_wordleapp_message(guild, after, members)
         print(f"Found {len(raw_results)} Wordle results from WordleAPP")
 
         if not raw_results:
@@ -351,7 +386,13 @@ async def on_ready():
         if channel is None:
             channel = await client.fetch_channel(SUMMARY_CHANNEL_ID)
 
-        summary = build_summary(results, data)
+        # If the original Wordle bot message has real Discord mentions, repost it as-is
+        if wordle_msg and MENTION_RE.search(wordle_msg.content):
+            summary = wordle_msg.content
+            print("Reposting original WordleAPP message (has real mentions)")
+        else:
+            summary = build_summary(results, data)
+            print("Built custom summary (plain text mentions)")
         await channel.send(summary)
         print("Posted daily summary")
 
