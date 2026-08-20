@@ -148,17 +148,18 @@ intents.members = True
 client = discord.Client(intents=intents)
 
 
-async def find_wordleapp_message(guild: discord.Guild, after: datetime, members: list[discord.Member]) -> tuple[dict[str, str], int | None, discord.Message | None]:
+async def find_wordleapp_messages(guild: discord.Guild, after: datetime, members: list[discord.Member]) -> tuple[dict[str, str], int | None, discord.Message | None]:
     """
-    Scan all channels for the most recent WordleAPP bot message.
-    Returns (results_dict, streak, message) or ({}, None, None) if not found.
+    Scan all channels for ALL WordleAPP bot messages.
+    Merges results from every message — a user's first found score wins.
+    Returns (merged_results, highest_streak, message_with_highest_streak).
     """
     all_channels = list(guild.text_channels) + list(guild.voice_channels)
     print(f"Total channels to check: {len(all_channels)}")
 
-    best_message = None
-    best_results = {}
-    best_streak = None
+    merged_results: dict[str, str] = {}
+    highest_streak = None
+    streak_message = None
 
     for channel in all_channels:
         ch_type = "text" if isinstance(channel, discord.TextChannel) else "voice"
@@ -184,12 +185,20 @@ async def find_wordleapp_message(guild: discord.Guild, after: datetime, members:
                 results = parse_wordleapp_message(message.content, members)
                 if results:
                     streak = extract_streak_from_message(message.content)
-                    # Keep the most recent one
-                    if best_message is None or message.created_at > best_message.created_at:
-                        best_message = message
-                        best_results = results
-                        best_streak = streak
-                        print(f"    Parsed {len(results)} results, streak={streak}")
+                    print(f"    Parsed {len(results)} results, streak={streak}")
+
+                    # Merge results — first score per user wins
+                    for uid, score in results.items():
+                        if uid not in merged_results:
+                            merged_results[uid] = score
+                            print(f"    Added user {uid} with score {score}")
+                        else:
+                            print(f"    User {uid} already has score {merged_results[uid]}, skipping {score}")
+
+                    # Track the message with the highest streak for the summary
+                    if streak is not None and (highest_streak is None or streak > highest_streak):
+                        highest_streak = streak
+                        streak_message = message
 
             print(f"    Read {msg_count} messages in #{channel.name}")
         except discord.Forbidden:
@@ -198,7 +207,7 @@ async def find_wordleapp_message(guild: discord.Guild, after: datetime, members:
         except discord.HTTPException as e:
             print(f"  ⚠ Error reading #{channel.name}: {e}")
 
-    return best_results, best_streak, best_message
+    return merged_results, highest_streak, streak_message
 
 
 def build_summary(results: dict[str, dict], data: dict) -> str:
@@ -359,7 +368,7 @@ async def on_ready():
         print(f"Fetched {len(members)} guild members")
 
         # Find the WordleAPP message
-        raw_results, wordleapp_streak, wordle_msg = await find_wordleapp_message(guild, after, members)
+        raw_results, wordleapp_streak, wordle_msg = await find_wordleapp_messages(guild, after, members)
         print(f"Found {len(raw_results)} Wordle results from WordleAPP")
 
         if not raw_results:
