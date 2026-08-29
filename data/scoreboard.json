@@ -1,23 +1,23 @@
 {
-  "streak": 92,
-  "last_date": "2026-08-28",
+  "streak": 93,
+  "last_date": "2026-08-29",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 10,
-      "total_wins": 10,
+      "total_games": 11,
+      "total_wins": 11,
       "score_counts": {
         "1": 0,
         "2": 0,
-        "3": 4,
+        "3": 5,
         "4": 3,
         "5": 1,
         "6": 2,
         "X": 0
       },
-      "current_streak": 8,
-      "best_streak": 8,
-      "best_count": 2
+      "current_streak": 9,
+      "best_streak": 9,
+      "best_count": 3
     },
     "507284396919750657": {
       "display_name": "Iza oblaka [65]",
@@ -32,25 +32,25 @@
         "6": 0,
         "X": 0
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 4,
       "best_count": 2
     },
     "279955599658319872": {
       "display_name": "Tatica",
-      "total_games": 11,
-      "total_wins": 10,
+      "total_games": 12,
+      "total_wins": 11,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 3,
-        "4": 2,
+        "4": 3,
         "5": 1,
         "6": 3,
         "X": 1
       },
-      "current_streak": 7,
-      "best_streak": 7,
+      "current_streak": 8,
+      "best_streak": 8,
       "best_count": 3
     },
     "478225390511456269": {
@@ -84,24 +84,24 @@
         "6": 1,
         "X": 0
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 9
     },
     "823895983347335189": {
       "display_name": "Hikamare",
-      "total_games": 8,
-      "total_wins": 8,
+      "total_games": 9,
+      "total_wins": 9,
       "best_count": 2,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 2,
-        "4": 3,
+        "4": 4,
         "5": 1,
         "6": 2,
         "X": 0
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 4
     },
     "538467169197883393": {
@@ -118,24 +118,24 @@
         "6": 0,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 1
     },
     "706224122685948018": {
       "display_name": "social media software influencer",
-      "total_games": 3,
-      "total_wins": 3,
+      "total_games": 4,
+      "total_wins": 4,
       "best_count": 1,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 1,
         "4": 2,
-        "5": 0,
+        "5": 1,
         "6": 0,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 2
     },
     "608623995356708874": {
@@ -271,6 +271,15 @@
         "538467169197883393": "3",
         "507284396919750657": "4",
         "608623995356708874": "X"
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "results": {
+        "823895983347335189": "4",
+        "720662838447702311": "3",
+        "279955599658319872": "4",
+        "706224122685948018": "5"
       }
     }
   ]
