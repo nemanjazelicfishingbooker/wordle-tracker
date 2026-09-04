@@ -1,23 +1,23 @@
 {
-  "streak": 98,
-  "last_date": "2026-09-03",
+  "streak": 17,
+  "last_date": "2026-09-04",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 15,
-      "total_wins": 15,
+      "total_games": 16,
+      "total_wins": 16,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 5,
         "4": 4,
         "5": 3,
-        "6": 3,
+        "6": 4,
         "X": 0
       },
-      "current_streak": 4,
+      "current_streak": 5,
       "best_streak": 9,
-      "best_count": 3
+      "best_count": 4
     },
     "507284396919750657": {
       "display_name": "Iza oblaka [65]",
@@ -49,7 +49,7 @@
         "6": 3,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 10,
       "best_count": 4
     },
@@ -66,7 +66,7 @@
         "6": 0,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2,
       "best_count": 1
     },
@@ -84,7 +84,7 @@
         "6": 1,
         "X": 0
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 9
     },
     "823895983347335189": {
@@ -101,7 +101,7 @@
         "6": 2,
         "X": 0
       },
-      "current_streak": 4,
+      "current_streak": 0,
       "best_streak": 4
     },
     "538467169197883393": {
@@ -118,7 +118,7 @@
         "6": 0,
         "X": 2
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 1
     },
     "706224122685948018": {
@@ -135,7 +135,7 @@
         "6": 0,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2
     },
     "608623995356708874": {
@@ -330,6 +330,12 @@
         "282892046283571201": "4",
         "706224122685948018": "4",
         "279955599658319872": "5"
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "results": {
+        "720662838447702311": "6"
       }
     }
   ]
