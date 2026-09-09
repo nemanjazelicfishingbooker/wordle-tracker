@@ -1,6 +1,6 @@
 {
-  "streak": 103,
-  "last_date": "2026-09-08",
+  "streak": 104,
+  "last_date": "2026-09-09",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
@@ -15,43 +15,43 @@
         "6": 5,
         "X": 0
       },
-      "current_streak": 9,
+      "current_streak": 0,
       "best_streak": 9,
       "best_count": 5
     },
     "507284396919750657": {
       "display_name": "Iza oblaka [65]",
-      "total_games": 9,
-      "total_wins": 9,
+      "total_games": 10,
+      "total_wins": 10,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 3,
         "4": 5,
-        "5": 0,
+        "5": 1,
         "6": 0,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 4,
       "best_count": 3
     },
     "279955599658319872": {
       "display_name": "Tatica",
-      "total_games": 19,
-      "total_wins": 18,
+      "total_games": 20,
+      "total_wins": 19,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 6,
-        "4": 5,
+        "4": 6,
         "5": 3,
         "6": 3,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 10,
-      "best_count": 6
+      "best_count": 7
     },
     "478225390511456269": {
       "display_name": "Faraon (uhapsen)",
@@ -84,24 +84,24 @@
         "6": 2,
         "X": 0
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 9
     },
     "823895983347335189": {
       "display_name": "Hikamare",
-      "total_games": 17,
-      "total_wins": 16,
-      "best_count": 6,
+      "total_games": 18,
+      "total_wins": 17,
+      "best_count": 7,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 4,
-        "4": 9,
+        "4": 10,
         "5": 1,
         "6": 2,
         "X": 1
       },
-      "current_streak": 3,
+      "current_streak": 4,
       "best_streak": 4
     },
     "538467169197883393": {
@@ -372,6 +372,14 @@
         "279955599658319872": "3",
         "282892046283571201": "4",
         "720662838447702311": "5"
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "results": {
+        "823895983347335189": "4",
+        "279955599658319872": "4",
+        "507284396919750657": "5"
       }
     }
   ]
