@@ -1,21 +1,21 @@
 {
-  "streak": 108,
-  "last_date": "2026-09-13",
+  "streak": 109,
+  "last_date": "2026-09-14",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 24,
-      "total_wins": 24,
+      "total_games": 25,
+      "total_wins": 25,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 6,
-        "4": 6,
+        "4": 7,
         "5": 6,
         "6": 5,
         "X": 0
       },
-      "current_streak": 4,
+      "current_streak": 5,
       "best_streak": 9,
       "best_count": 6
     },
@@ -38,18 +38,18 @@
     },
     "279955599658319872": {
       "display_name": "Tatica",
-      "total_games": 23,
-      "total_wins": 22,
+      "total_games": 24,
+      "total_wins": 23,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 7,
-        "4": 8,
+        "4": 9,
         "5": 3,
         "6": 3,
         "X": 1
       },
-      "current_streak": 3,
+      "current_streak": 4,
       "best_streak": 10,
       "best_count": 7
     },
@@ -72,37 +72,37 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 20,
-      "total_wins": 20,
-      "best_count": 8,
+      "total_games": 21,
+      "total_wins": 21,
+      "best_count": 9,
       "score_counts": {
         "1": 0,
         "2": 1,
-        "3": 7,
+        "3": 8,
         "4": 7,
         "5": 3,
         "6": 2,
         "X": 0
       },
-      "current_streak": 4,
+      "current_streak": 5,
       "best_streak": 9
     },
     "823895983347335189": {
       "display_name": "Hikamare",
-      "total_games": 22,
-      "total_wins": 21,
-      "best_count": 8,
+      "total_games": 23,
+      "total_wins": 22,
+      "best_count": 9,
       "score_counts": {
         "1": 0,
         "2": 0,
-        "3": 5,
+        "3": 6,
         "4": 12,
         "5": 2,
         "6": 2,
         "X": 1
       },
-      "current_streak": 8,
-      "best_streak": 8
+      "current_streak": 9,
+      "best_streak": 9
     },
     "538467169197883393": {
       "display_name": "StrUjka",
@@ -423,6 +423,15 @@
         "282892046283571201": "3",
         "279955599658319872": "4",
         "720662838447702311": "5"
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "results": {
+        "823895983347335189": "3",
+        "282892046283571201": "3",
+        "279955599658319872": "4",
+        "720662838447702311": "4"
       }
     }
   ]
