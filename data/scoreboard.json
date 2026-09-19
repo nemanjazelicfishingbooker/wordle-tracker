@@ -1,23 +1,23 @@
 {
-  "streak": 113,
-  "last_date": "2026-09-18",
+  "streak": 114,
+  "last_date": "2026-09-19",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 29,
-      "total_wins": 29,
+      "total_games": 30,
+      "total_wins": 30,
       "score_counts": {
         "1": 0,
         "2": 2,
-        "3": 7,
+        "3": 8,
         "4": 8,
         "5": 6,
         "6": 6,
         "X": 0
       },
-      "current_streak": 9,
-      "best_streak": 9,
-      "best_count": 8
+      "current_streak": 10,
+      "best_streak": 10,
+      "best_count": 9
     },
     "507284396919750657": {
       "display_name": "Iza oblaka [65]",
@@ -38,18 +38,18 @@
     },
     "279955599658319872": {
       "display_name": "Tatica",
-      "total_games": 28,
-      "total_wins": 27,
+      "total_games": 29,
+      "total_wins": 28,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 9,
-        "4": 10,
+        "4": 11,
         "5": 4,
         "6": 3,
         "X": 1
       },
-      "current_streak": 8,
+      "current_streak": 9,
       "best_streak": 10,
       "best_count": 9
     },
@@ -72,20 +72,20 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 25,
-      "total_wins": 25,
-      "best_count": 12,
+      "total_games": 26,
+      "total_wins": 26,
+      "best_count": 13,
       "score_counts": {
         "1": 0,
         "2": 1,
-        "3": 12,
+        "3": 13,
         "4": 7,
         "5": 3,
         "6": 2,
         "X": 0
       },
-      "current_streak": 9,
-      "best_streak": 9
+      "current_streak": 10,
+      "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
@@ -101,7 +101,7 @@
         "6": 2,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -474,6 +474,14 @@
         "720662838447702311": "2",
         "282892046283571201": "3",
         "279955599658319872": "5"
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "results": {
+        "282892046283571201": "3",
+        "720662838447702311": "3",
+        "279955599658319872": "4"
       }
     }
   ]
