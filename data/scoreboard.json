@@ -1,57 +1,57 @@
 {
-  "streak": 115,
-  "last_date": "2026-09-20",
+  "streak": 116,
+  "last_date": "2026-09-21",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 31,
-      "total_wins": 31,
+      "total_games": 32,
+      "total_wins": 32,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 8,
         "4": 8,
-        "5": 6,
+        "5": 7,
         "6": 6,
         "X": 0
       },
-      "current_streak": 11,
-      "best_streak": 11,
+      "current_streak": 12,
+      "best_streak": 12,
       "best_count": 10
     },
     "507284396919750657": {
       "display_name": "Iza oblaka [65]",
-      "total_games": 15,
-      "total_wins": 14,
+      "total_games": 16,
+      "total_wins": 15,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 3,
         "4": 8,
-        "5": 2,
+        "5": 3,
         "6": 0,
         "X": 1
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 4,
       "best_count": 3
     },
     "279955599658319872": {
       "display_name": "Tatica",
-      "total_games": 30,
-      "total_wins": 29,
+      "total_games": 31,
+      "total_wins": 30,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 9,
-        "4": 12,
+        "4": 13,
         "5": 4,
         "6": 3,
         "X": 1
       },
-      "current_streak": 10,
-      "best_streak": 10,
-      "best_count": 9
+      "current_streak": 11,
+      "best_streak": 11,
+      "best_count": 10
     },
     "478225390511456269": {
       "display_name": "Faraon (uhapsen)",
@@ -72,19 +72,19 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 26,
-      "total_wins": 26,
-      "best_count": 13,
+      "total_games": 27,
+      "total_wins": 27,
+      "best_count": 14,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 13,
-        "4": 7,
+        "4": 8,
         "5": 3,
         "6": 2,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 10
     },
     "823895983347335189": {
@@ -101,7 +101,7 @@
         "6": 2,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -169,7 +169,7 @@
         "6": 1,
         "X": 0
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 1
     }
   },
@@ -508,6 +508,15 @@
         "720662838447702311": "2",
         "279955599658319872": "4",
         "382238365631774721": "6"
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "results": {
+        "282892046283571201": "4",
+        "279955599658319872": "4",
+        "720662838447702311": "5",
+        "507284396919750657": "5"
       }
     }
   ]
