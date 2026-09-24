@@ -1,21 +1,21 @@
 {
-  "streak": 118,
-  "last_date": "2026-09-23",
+  "streak": 119,
+  "last_date": "2026-09-24",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 33,
-      "total_wins": 33,
+      "total_games": 34,
+      "total_wins": 34,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 9,
         "4": 8,
-        "5": 7,
+        "5": 8,
         "6": 6,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 13,
       "best_count": 11
     },
@@ -49,7 +49,7 @@
         "6": 3,
         "X": 1
       },
-      "current_streak": 13,
+      "current_streak": 0,
       "best_streak": 13,
       "best_count": 12
     },
@@ -72,36 +72,36 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 28,
-      "total_wins": 28,
+      "total_games": 29,
+      "total_wins": 29,
       "best_count": 14,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 13,
-        "4": 9,
+        "4": 10,
         "5": 3,
         "6": 2,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 29,
-      "total_wins": 28,
-      "best_count": 13,
+      "total_games": 30,
+      "total_wins": 29,
+      "best_count": 14,
       "score_counts": {
         "1": 0,
         "2": 0,
-        "3": 10,
+        "3": 11,
         "4": 13,
         "5": 3,
         "6": 2,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -118,7 +118,7 @@
         "6": 1,
         "X": 2
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2
     },
     "706224122685948018": {
@@ -535,6 +535,14 @@
         "823895983347335189": "4",
         "279955599658319872": "4",
         "538467169197883393": "5"
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "results": {
+        "823895983347335189": "3",
+        "282892046283571201": "4",
+        "720662838447702311": "5"
       }
     }
   ]
