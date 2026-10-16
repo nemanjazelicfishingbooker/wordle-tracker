@@ -1,55 +1,55 @@
 {
-  "streak": 2,
-  "last_date": "2026-10-15",
+  "streak": 4,
+  "last_date": "2026-10-16",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 47,
-      "total_wins": 46,
+      "total_games": 48,
+      "total_wins": 47,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 12,
         "4": 11,
-        "5": 12,
+        "5": 13,
         "6": 8,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 13,
       "best_count": 14
     },
     "507284396919750657": {
       "display_name": "Veliki Bole",
-      "total_games": 29,
-      "total_wins": 26,
+      "total_games": 30,
+      "total_wins": 27,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 7,
-        "4": 9,
+        "4": 10,
         "5": 8,
         "6": 1,
         "X": 3
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 4,
       "best_count": 8
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 50,
-      "total_wins": 49,
+      "total_games": 51,
+      "total_wins": 50,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 11,
-        "4": 21,
+        "4": 22,
         "5": 11,
         "6": 5,
         "X": 1
       },
-      "current_streak": 3,
+      "current_streak": 4,
       "best_streak": 13,
       "best_count": 18
     },
@@ -72,36 +72,36 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 32,
-      "total_wins": 32,
-      "best_count": 16,
+      "total_games": 33,
+      "total_wins": 33,
+      "best_count": 17,
       "score_counts": {
         "1": 0,
         "2": 1,
-        "3": 15,
+        "3": 16,
         "4": 11,
         "5": 3,
         "6": 2,
         "X": 0
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 46,
-      "total_wins": 45,
+      "total_games": 47,
+      "total_wins": 46,
       "best_count": 24,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 15,
-        "4": 19,
+        "4": 20,
         "5": 9,
         "6": 2,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -186,7 +186,7 @@
         "6": 2,
         "X": 2
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2
     },
     "449975309241155594": {
@@ -763,6 +763,16 @@
         "720662838447702311": "4",
         "279955599658319872": "4",
         "507284396919750657": "X"
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "results": {
+        "823895983347335189": "4",
+        "282892046283571201": "3",
+        "279955599658319872": "4",
+        "507284396919750657": "4",
+        "720662838447702311": "5"
       }
     }
   ]
