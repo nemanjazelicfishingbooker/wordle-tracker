@@ -1,21 +1,21 @@
 {
-  "streak": 6,
-  "last_date": "2026-10-19",
+  "streak": 7,
+  "last_date": "2026-10-20",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 50,
-      "total_wins": 49,
+      "total_games": 51,
+      "total_wins": 50,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 12,
-        "4": 12,
+        "4": 13,
         "5": 14,
         "6": 8,
         "X": 1
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 13,
       "best_count": 16
     },
@@ -38,18 +38,18 @@
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 54,
-      "total_wins": 53,
+      "total_games": 55,
+      "total_wins": 54,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 11,
         "4": 24,
-        "5": 11,
+        "5": 12,
         "6": 6,
         "X": 1
       },
-      "current_streak": 7,
+      "current_streak": 8,
       "best_streak": 13,
       "best_count": 19
     },
@@ -89,24 +89,24 @@
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 49,
-      "total_wins": 48,
-      "best_count": 25,
+      "total_games": 50,
+      "total_wins": 49,
+      "best_count": 26,
       "score_counts": {
         "1": 0,
         "2": 0,
-        "3": 16,
+        "3": 17,
         "4": 20,
         "5": 9,
         "6": 3,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 11
     },
     "538467169197883393": {
       "display_name": "StrUjka",
-      "total_games": 15,
+      "total_games": 16,
       "total_wins": 10,
       "best_count": 4,
       "score_counts": {
@@ -116,9 +116,9 @@
         "4": 1,
         "5": 4,
         "6": 1,
-        "X": 5
+        "X": 6
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2
     },
     "706224122685948018": {
@@ -205,6 +205,23 @@
       },
       "current_streak": 0,
       "best_streak": 1
+    },
+    "457449407571296256": {
+      "display_name": "Fearless",
+      "total_games": 1,
+      "total_wins": 0,
+      "best_count": 0,
+      "score_counts": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "X": 1
+      },
+      "current_streak": 0,
+      "best_streak": 0
     }
   },
   "history": [
@@ -800,6 +817,16 @@
         "538467169197883393": "3",
         "279955599658319872": "4",
         "507284396919750657": "X"
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "results": {
+        "823895983347335189": "3",
+        "720662838447702311": "4",
+        "279955599658319872": "5",
+        "538467169197883393": "X",
+        "457449407571296256": "X"
       }
     }
   ]
