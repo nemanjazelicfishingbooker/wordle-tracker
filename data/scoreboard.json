@@ -1,27 +1,27 @@
 {
-  "streak": 7,
-  "last_date": "2026-10-29",
+  "streak": 8,
+  "last_date": "2026-10-30",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 54,
-      "total_wins": 53,
+      "total_games": 55,
+      "total_wins": 54,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 12,
-        "4": 14,
+        "4": 15,
         "5": 15,
         "6": 9,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 13,
-      "best_count": 16
+      "best_count": 17
     },
     "507284396919750657": {
       "display_name": "Veliki Bole",
-      "total_games": 38,
+      "total_games": 39,
       "total_wins": 34,
       "score_counts": {
         "1": 0,
@@ -30,26 +30,26 @@
         "4": 12,
         "5": 12,
         "6": 1,
-        "X": 4
+        "X": 5
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 5,
       "best_count": 12
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 62,
-      "total_wins": 59,
+      "total_games": 63,
+      "total_wins": 60,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 12,
         "4": 27,
-        "5": 13,
+        "5": 14,
         "6": 6,
         "X": 3
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 13,
       "best_count": 21
     },
@@ -72,54 +72,54 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 42,
-      "total_wins": 41,
-      "best_count": 21,
+      "total_games": 43,
+      "total_wins": 42,
+      "best_count": 22,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 17,
-        "4": 15,
+        "4": 16,
         "5": 4,
         "6": 4,
         "X": 1
       },
-      "current_streak": 7,
+      "current_streak": 8,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 53,
-      "total_wins": 52,
+      "total_games": 54,
+      "total_wins": 53,
       "best_count": 28,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 19,
         "4": 20,
-        "5": 10,
+        "5": 11,
         "6": 3,
         "X": 1
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 11
     },
     "538467169197883393": {
       "display_name": "StrUjka",
-      "total_games": 22,
-      "total_wins": 14,
-      "best_count": 6,
+      "total_games": 23,
+      "total_wins": 15,
+      "best_count": 7,
       "score_counts": {
         "1": 0,
         "2": 2,
         "3": 2,
-        "4": 2,
+        "4": 3,
         "5": 6,
         "6": 2,
         "X": 8
       },
-      "current_streak": 4,
-      "best_streak": 4
+      "current_streak": 5,
+      "best_streak": 5
     },
     "706224122685948018": {
       "display_name": "cole",
@@ -152,7 +152,7 @@
         "6": 0,
         "X": 3
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 2
     },
     "382238365631774721": {
@@ -944,6 +944,17 @@
         "507284396919750657": "5",
         "538467169197883393": "6",
         "279955599658319872": "X"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "results": {
+        "720662838447702311": "4",
+        "823895983347335189": "5",
+        "282892046283571201": "4",
+        "538467169197883393": "4",
+        "279955599658319872": "5",
+        "507284396919750657": "X"
       }
     }
   ]
