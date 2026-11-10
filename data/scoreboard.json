@@ -1,23 +1,23 @@
 {
-  "streak": 18,
-  "last_date": "2026-11-09",
+  "streak": 8,
+  "last_date": "2026-11-10",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 62,
-      "total_wins": 59,
+      "total_games": 63,
+      "total_wins": 60,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 14,
-        "4": 17,
+        "4": 18,
         "5": 16,
         "6": 9,
         "X": 3
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 13,
-      "best_count": 18
+      "best_count": 19
     },
     "507284396919750657": {
       "display_name": "Veliki Bole",
@@ -32,24 +32,24 @@
         "6": 1,
         "X": 6
       },
-      "current_streak": 3,
+      "current_streak": 0,
       "best_streak": 5,
       "best_count": 13
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 71,
-      "total_wins": 67,
+      "total_games": 72,
+      "total_wins": 68,
       "score_counts": {
         "1": 0,
         "2": 2,
         "3": 14,
         "4": 28,
-        "5": 15,
+        "5": 16,
         "6": 8,
         "X": 4
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 13,
       "best_count": 23
     },
@@ -84,24 +84,24 @@
         "6": 4,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 61,
-      "total_wins": 60,
+      "total_games": 62,
+      "total_wins": 61,
       "best_count": 30,
       "score_counts": {
         "1": 0,
         "2": 0,
         "3": 21,
         "4": 23,
-        "5": 13,
+        "5": 14,
         "6": 3,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -118,7 +118,7 @@
         "6": 3,
         "X": 8
       },
-      "current_streak": 4,
+      "current_streak": 0,
       "best_streak": 6
     },
     "706224122685948018": {
@@ -174,19 +174,19 @@
     },
     "703204207083126807": {
       "display_name": "Jovana",
-      "total_games": 14,
-      "total_wins": 10,
+      "total_games": 15,
+      "total_wins": 11,
       "best_count": 2,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 1,
         "4": 1,
-        "5": 5,
+        "5": 6,
         "6": 2,
         "X": 4
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 3
     },
     "449975309241155594": {
@@ -1061,6 +1061,15 @@
         "538467169197883393": "5",
         "282892046283571201": "5",
         "279955599658319872": "X"
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "results": {
+        "720662838447702311": "4",
+        "823895983347335189": "5",
+        "703204207083126807": "5",
+        "279955599658319872": "5"
       }
     }
   ]
