@@ -1,6 +1,6 @@
 {
-  "streak": 21,
-  "last_date": "2026-11-12",
+  "streak": 22,
+  "last_date": "2026-11-13",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
@@ -32,24 +32,24 @@
         "6": 1,
         "X": 6
       },
-      "current_streak": 2,
+      "current_streak": 0,
       "best_streak": 5,
       "best_count": 13
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 74,
-      "total_wins": 70,
+      "total_games": 75,
+      "total_wins": 71,
       "score_counts": {
         "1": 0,
         "2": 2,
         "3": 14,
         "4": 30,
-        "5": 16,
+        "5": 17,
         "6": 8,
         "X": 4
       },
-      "current_streak": 3,
+      "current_streak": 4,
       "best_streak": 13,
       "best_count": 24
     },
@@ -72,19 +72,19 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 52,
-      "total_wins": 51,
-      "best_count": 25,
+      "total_games": 53,
+      "total_wins": 52,
+      "best_count": 26,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 20,
-        "4": 19,
+        "4": 20,
         "5": 6,
         "6": 5,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 10
     },
     "823895983347335189": {
@@ -174,19 +174,19 @@
     },
     "703204207083126807": {
       "display_name": "Jovana",
-      "total_games": 16,
-      "total_wins": 12,
+      "total_games": 17,
+      "total_wins": 13,
       "best_count": 2,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 1,
         "4": 2,
-        "5": 6,
+        "5": 7,
         "6": 2,
         "X": 4
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 3
     },
     "449975309241155594": {
@@ -1090,6 +1090,14 @@
         "279955599658319872": "4",
         "507284396919750657": "5",
         "282892046283571201": "6"
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "results": {
+        "703204207083126807": "5",
+        "282892046283571201": "4",
+        "279955599658319872": "5"
       }
     }
   ]
