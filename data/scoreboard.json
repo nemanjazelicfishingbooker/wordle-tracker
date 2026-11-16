@@ -1,6 +1,6 @@
 {
-  "streak": 24,
-  "last_date": "2026-11-15",
+  "streak": 25,
+  "last_date": "2026-11-16",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
@@ -32,26 +32,26 @@
         "6": 1,
         "X": 7
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 5,
       "best_count": 13
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 77,
-      "total_wins": 73,
+      "total_games": 78,
+      "total_wins": 74,
       "score_counts": {
         "1": 0,
         "2": 2,
-        "3": 14,
+        "3": 15,
         "4": 32,
         "5": 17,
         "6": 8,
         "X": 4
       },
-      "current_streak": 6,
+      "current_streak": 7,
       "best_streak": 13,
-      "best_count": 26
+      "best_count": 27
     },
     "478225390511456269": {
       "display_name": "Vucko",
@@ -72,25 +72,25 @@
     },
     "282892046283571201": {
       "display_name": "Muscle mommy",
-      "total_games": 55,
-      "total_wins": 53,
+      "total_games": 56,
+      "total_wins": 54,
       "best_count": 26,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 20,
-        "4": 20,
+        "4": 21,
         "5": 7,
         "6": 5,
         "X": 2
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 65,
-      "total_wins": 64,
+      "total_games": 66,
+      "total_wins": 65,
       "best_count": 31,
       "score_counts": {
         "1": 0,
@@ -98,10 +98,10 @@
         "3": 22,
         "4": 23,
         "5": 16,
-        "6": 3,
+        "6": 4,
         "X": 1
       },
-      "current_streak": 2,
+      "current_streak": 3,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -118,7 +118,7 @@
         "6": 3,
         "X": 9
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 6
     },
     "706224122685948018": {
@@ -174,20 +174,20 @@
     },
     "703204207083126807": {
       "display_name": "Jovana",
-      "total_games": 19,
-      "total_wins": 15,
+      "total_games": 20,
+      "total_wins": 16,
       "best_count": 3,
       "score_counts": {
         "1": 0,
         "2": 1,
         "3": 1,
         "4": 3,
-        "5": 7,
+        "5": 8,
         "6": 3,
         "X": 4
       },
-      "current_streak": 3,
-      "best_streak": 3
+      "current_streak": 4,
+      "best_streak": 4
     },
     "449975309241155594": {
       "display_name": "djurdj1na",
@@ -271,7 +271,7 @@
         "6": 0,
         "X": 0
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 1
     }
   },
@@ -1141,6 +1141,15 @@
         "282892046283571201": "5",
         "507284396919750657": "5",
         "424603221731049493": "5"
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "results": {
+        "703204207083126807": "5",
+        "823895983347335189": "6",
+        "279955599658319872": "3",
+        "282892046283571201": "4"
       }
     }
   ]
