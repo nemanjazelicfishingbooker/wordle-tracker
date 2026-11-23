@@ -1,21 +1,21 @@
 {
-  "streak": 30,
-  "last_date": "2026-11-22",
+  "streak": 32,
+  "last_date": "2026-11-23",
   "users": {
     "720662838447702311": {
       "display_name": "ja samuel ivana",
-      "total_games": 69,
-      "total_wins": 65,
+      "total_games": 70,
+      "total_wins": 66,
       "score_counts": {
         "1": 0,
         "2": 3,
         "3": 16,
         "4": 20,
-        "5": 17,
+        "5": 18,
         "6": 9,
         "X": 4
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 13,
       "best_count": 22
     },
@@ -38,18 +38,18 @@
     },
     "279955599658319872": {
       "display_name": "Hiibriid",
-      "total_games": 82,
-      "total_wins": 78,
+      "total_games": 83,
+      "total_wins": 79,
       "score_counts": {
         "1": 0,
         "2": 2,
         "3": 16,
-        "4": 33,
+        "4": 34,
         "5": 19,
         "6": 8,
         "X": 4
       },
-      "current_streak": 1,
+      "current_streak": 2,
       "best_streak": 13,
       "best_count": 28
     },
@@ -84,24 +84,24 @@
         "6": 5,
         "X": 2
       },
-      "current_streak": 1,
+      "current_streak": 0,
       "best_streak": 10
     },
     "823895983347335189": {
       "display_name": "Mikumare",
-      "total_games": 72,
-      "total_wins": 71,
+      "total_games": 73,
+      "total_wins": 72,
       "best_count": 35,
       "score_counts": {
         "1": 1,
         "2": 1,
         "3": 24,
         "4": 23,
-        "5": 17,
+        "5": 18,
         "6": 5,
         "X": 1
       },
-      "current_streak": 9,
+      "current_streak": 10,
       "best_streak": 11
     },
     "538467169197883393": {
@@ -174,19 +174,19 @@
     },
     "703204207083126807": {
       "display_name": "Jovana",
-      "total_games": 23,
-      "total_wins": 19,
-      "best_count": 4,
+      "total_games": 24,
+      "total_wins": 20,
+      "best_count": 5,
       "score_counts": {
         "1": 0,
-        "2": 1,
+        "2": 2,
         "3": 3,
         "4": 3,
         "5": 9,
         "6": 3,
         "X": 4
       },
-      "current_streak": 0,
+      "current_streak": 1,
       "best_streak": 6
     },
     "449975309241155594": {
@@ -1207,6 +1207,15 @@
         "720662838447702311": "X",
         "282892046283571201": "3",
         "279955599658319872": "5"
+      }
+    },
+    {
+      "date": "2026-11-23",
+      "results": {
+        "703204207083126807": "2",
+        "720662838447702311": "5",
+        "823895983347335189": "5",
+        "279955599658319872": "4"
       }
     }
   ]
